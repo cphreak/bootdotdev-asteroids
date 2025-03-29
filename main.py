@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+import player
 
 def main():
     print(f"Starting Asteroids!")
@@ -10,6 +11,7 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
     numpass, numfail = pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    my_player = player.Player((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2))
     clock = pygame.time.Clock()
     dt = 0
     while True:
@@ -18,6 +20,7 @@ def main():
                 # print(f"dt= {dt}")
                 return
         screen.fill((0,0,0))
+        my_player.draw(screen)
         pygame.display.flip()
 
         #end of loop
