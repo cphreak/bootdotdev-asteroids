@@ -15,14 +15,14 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
     numpass, numfail = pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    updatable = pygame.sprite.Group()
-    drawable = pygame.sprite.Group()
-    # shot = pygame.sprite.Group()
-    asteroid = pygame.sprite.Group()
-    Player.containers = (updatable, drawable,)
-    Shot.containers = ( updatable, drawable, )
-    Asteroid.containers = (updatable, drawable, asteroid, )
-    AsteroidField.containers = (updatable, )
+    updatables = pygame.sprite.Group()
+    drawables = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    Player.containers = (updatables, drawables,)
+    Shot.containers = ( updatables, drawables, shots )
+    Asteroid.containers = (updatables, drawables, asteroids, )
+    AsteroidField.containers = (updatables, )
     my_field = AsteroidField()
     my_player = Player((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2))
     clock = pygame.time.Clock()
@@ -32,13 +32,21 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill((0,0,0))
-        updatable.update(dt)
-        for unit in asteroid:
+        updatables.update(dt)
+        for unit in asteroids:
             if (unit.collision(my_player)):
                 print(f"Game over!")
                 sys.exit()
+            # print(f"Unit: {unit}")
+            # else:
+            for shot in shots:
+                # print(f"Shot: {shot}")
+                if (unit.collision(shot)):
+                    shot.kill()
+                    unit.kill()
+                    print(f"Shot2Asteroid Collision!")
 
-        for unit in drawable:
+        for unit in drawables:
             # print(unit)
             unit.draw(screen)
 
