@@ -43,8 +43,8 @@ def main():
                 # print(f"Shot: {shot}")
                 if (unit.collision(shot)):
                     shot.kill()
-                    unit.kill()
-                    print(f"Shot2Asteroid Collision!")
+                    unit.split()
+                    # print(f"Shot2Asteroid Collision!")
 
         for unit in drawables:
             # print(unit)
