@@ -3,6 +3,7 @@
 # throughout this file
 import sys
 import pygame
+from logger import log_state
 from constants import *
 from player import Player
 from shot import Shot
@@ -28,6 +29,7 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     while True:
+        log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
