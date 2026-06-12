@@ -2,6 +2,9 @@
 
 A classic Asteroids arcade game built with Python and [Pygame](https://www.pygame.org/). Pilot a triangle-shaped ship through space, destroy incoming asteroids, and avoid collisions.
 
+## Motivation
+Why not?
+
 ## Features
 
 - Player ship with rotation, thrust, and shooting
@@ -15,7 +18,7 @@ A classic Asteroids arcade game built with Python and [Pygame](https://www.pygam
 - Python 3.13+
 - [uv](https://docs.astral.sh/uv/) (recommended) or pip
 
-## Installation
+## Quick Start
 
 ### With uv (recommended)
 
@@ -31,7 +34,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Running the game
+## Usage: Running the game
 
 ```bash
 uv run python main.py
@@ -89,6 +92,9 @@ Game parameters live in `constants.py`:
 During each run, `logger.py` writes game state snapshots to `game_state.jsonl` (once per second for the first 16 seconds). Each entry includes sprite counts, positions, velocities, and other metadata useful for debugging.
 
 This file is gitignored and recreated on each run.
+
+## Contributing
+Please don't
 
 ## License
 
